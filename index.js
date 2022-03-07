@@ -7,6 +7,7 @@ const app = express();
 const PORT = 3001;
 
 app.use(morgan('dev'));
+app.use(compression());
 app.use(cors());
 app.use(express.json());
 
