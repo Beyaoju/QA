@@ -6,6 +6,7 @@
   "scripts": {
     "prod": "NODE_ENV=production node index.js",
     "start": "nodemon index.js",
+    "route": "sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3001",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tables": "psql -d qa -f db/schema.sql",
     "load": "psql -d qa -f db/loader.sql"
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/Team-Altaria/QA-API#readme",
   "dependencies": {
+    "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "morgan": "^1.10.0",

@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/qa/questions/:product_id', (req, res) => {
   const { page = 1, count = 5 } = req.query;
   const { product_id } = req.params;
-  const query1 = `SELECT product_id, coalesce(json_agg(json_build_object(
+  const query = `EXPLAIN ANALYZE SELECT product_id, coalesce(json_agg(json_build_object(
     'question_id',q.question_id,
     'question_body', q.question_body,
     'question_date', to_timestamp(question_date/1000)::timestamp,
@@ -22,9 +22,10 @@ router.get('/qa/questions/:product_id', (req, res) => {
 
   const queryArgs = [product_id, count]
 
-  db.query(query1, queryArgs)
+  db.query(query, queryArgs)
     .then(response => {
       response = response.rows[0] ? response.rows[0] : { 'product_id': product_id, 'results': []};
+      // response = response.rows[0] ? response.rows : { 'product_id': product_id, 'results': []};
       res.send(response);
     })
     .catch(err => res.status(400).send(err))
@@ -34,7 +35,7 @@ router.get('/qa/questions/:product_id', (req, res) => {
 router.get('/qa/questions/:question_id/answers', (req, res) => {
   const { page = 1, count = 5 } = req.query;
   const { question_id } = req.params;
-  const query5 = `SELECT json_build_object(
+  const query = `SELECT json_build_object(
     'question', a.question_id,
     'page', $2::json,
     'count', $3::INTEGER,
@@ -49,7 +50,7 @@ router.get('/qa/questions/:question_id/answers', (req, res) => {
 
   const queryArgs = [question_id, page, count];
 
-  db.query(query5, queryArgs)
+  db.query(query, queryArgs)
     .then(response => {
       response = response.rows[0] ? response.rows[0] : {json_build_object: { 'question': question_id, 'page': page, 'count': count, 'results': []}};
       res.send(response.json_build_object);

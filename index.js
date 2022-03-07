@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const compression = require('compression')
 const router = require('./router');
 const app = express();
 const PORT = 3001;
