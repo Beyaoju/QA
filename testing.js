@@ -9,11 +9,11 @@ export const options = {
   duration: '15s'
 };
 
-let count = 1;
+let count = Math.floor(Math.random() * 1000000);
 
 export default function () {
-  // const res = http.get(`http://localhost:3001/api/fec2/hr-lax/qa/questions/${count}`)
-  const res = http.get(`http://localhost:3001/api/fec2/hr-lax/qa/questions/${count}/answers`)
+  const res = http.get(`http://localhost:3001/api/fec2/hr-lax/qa/questions/${count}`)
+  // const res = http.get(`http://localhost:3001/api/fec2/hr-lax/qa/questions/${count}/answers`)
   // sleep(1);
 
   check(res, {
