@@ -25,18 +25,19 @@ Having selected PostgreSQL as my DBMS, my immediate next step was to map out my 
 Using this diagram made translating each table's worth of data easier to translate to CREATE TABLE commands.
 
 **Database Design**
-![Screen Shot 2022-03-29 at 8 52 41 AM](https://user-images.githubusercontent.com/43115008/160653308-f2d6bef7-8ca3-413b-8a43-3662df9788f6.png)
+
+![Screen Shot 2022-03-30 at 1 56 49 PM](https://user-images.githubusercontent.com/94568342/160929589-922e3759-7e70-4be0-a25a-276ba5556dae.png)
 
 **Table query snapshot**
-![Screen Shot 2022-03-29 at 9 17 24 AM](https://user-images.githubusercontent.com/43115008/160658316-85ffb14c-7a57-4ab5-bde9-122267cb68f0.png)
+
+![Screen Shot 2022-03-30 at 1 58 32 PM](https://user-images.githubusercontent.com/94568342/160929770-4eaccc20-dfd2-48bd-ada1-a9ef766bffb1.png)
 
 ### Build Performant Queries
 
 **Query Building**
 I found building queries from scratch challenging. But by using PostgreSQL's [documentation](https://www.postgresql.org/docs/14/index.html), I was able to accurately shape the queried data to take the exact shape my frontend asked for.
 
-![Screen Shot 2022-03-29 at 9 32 38 AM](https://user-images.githubusercontent.com/43115008/160661165-f8fb112d-c8e2-4664-b006-8545eb2e244a.png)
-
+![Screen Shot 2022-03-30 at 2 04 24 PM](https://user-images.githubusercontent.com/94568342/160930710-27e7444f-3ce7-488c-974a-c0a0d93507de.png)
 
 **Query Plan Data**
 
@@ -68,7 +69,7 @@ Diagram:
 
 Results:
 
-![Screen Shot 2022-03-29 at 10 00 00 AM](https://user-images.githubusercontent.com/43115008/160665966-ecb38898-796c-4994-a787-6714998acd88.png)
+![Screen Shot 2022-03-30 at 2 10 43 PM](https://user-images.githubusercontent.com/94568342/160931579-3fe17cad-6825-4778-b1ad-00a08203de62.png)
 
 Notes: 
 
@@ -81,8 +82,8 @@ Diagram:
 
 Results:
 
- ![Screen Shot 2022-03-29 at 10 01 35 AM](https://user-images.githubusercontent.com/43115008/160666215-d98391d3-1283-4937-9ca4-aa62c1d0e6e4.png)
- 
+![Screen Shot 2022-03-30 at 2 11 59 PM](https://user-images.githubusercontent.com/94568342/160931643-d1662f17-bd93-4ffc-ad82-1a25c34a2c80.png)
+
 Notes:
 
 T2.Micro EC2 instances come with 1 vGPU, which I hypothesized was being put under stress by hosting both the Express server as well as Postgres. I noted a large uptick in performance at 1,000 RPS, however, at the expense of a much higher latency.
@@ -94,7 +95,7 @@ Diagram:
 
 Results:
 
-![Screen Shot 2022-03-29 at 10 10 49 AM](https://user-images.githubusercontent.com/43115008/160667653-b95fe3b6-e4db-48d2-b75c-63bb5f903514.png)
+![Screen Shot 2022-03-30 at 2 13 21 PM](https://user-images.githubusercontent.com/94568342/160931835-bfa05d45-83e6-49e0-8afc-db13b9d53faf.png)
 
 Notes:
 
@@ -109,7 +110,7 @@ Diagram:
 
 Results:
 
-![Screen Shot 2022-03-29 at 10 17 02 AM](https://user-images.githubusercontent.com/43115008/160668658-30b1e1a4-4ca6-4b06-ae94-12cb3b1aa851.png)
+![Screen Shot 2022-03-30 at 2 14 10 PM](https://user-images.githubusercontent.com/94568342/160931950-b46be681-5e7f-4919-985a-d4ee75a5070b.png)
 
 Notes:
 
@@ -122,7 +123,7 @@ Diagram:
 
 Results:
 
-![Screen Shot 2022-03-29 at 10 19 14 AM](https://user-images.githubusercontent.com/43115008/160669034-6d6a1692-f600-4602-b91f-5954a375845d.png)
+![Screen Shot 2022-03-30 at 2 15 00 PM](https://user-images.githubusercontent.com/94568342/160932123-58df6580-9ce7-4375-9557-905a15648055.png)
 
 Notes:
 
@@ -131,7 +132,7 @@ While building this setup was exciting, I was ultimately dissapointed with only 
 **Test 6** - Caching Enabled
 Results:
 
-![Screen Shot 2022-03-29 at 10 22 12 AM](https://user-images.githubusercontent.com/43115008/160669517-31fa7271-e884-47e9-9e7f-7a585e728466.png)
+![Screen Shot 2022-03-30 at 2 16 12 PM](https://user-images.githubusercontent.com/94568342/160932324-58e26200-5b38-4cbf-be4f-7f79dcbe1aca.png)
 
 Notes:
 
